@@ -6,13 +6,13 @@ class TestCountry(unittest.TestCase):
 
     def setUp(self):
         self.country_1 = Country("Greece", True)
-        self.country_2 = Country("Japan", False)
+        self.country_2 = Country("Japan")
         self.country_3 = Country("Australia", True, 3)
     
     def test_country_has_name(self):
         self.assertEqual("Greece", self.country_1.name)
     
-    def test_country_has_visited(self):
+    def test_country_has_visited_status(self):
         self.assertEqual(False, self.country_2.visited)
     
     def test_country_can_set_id(self):
