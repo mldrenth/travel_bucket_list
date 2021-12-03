@@ -5,7 +5,21 @@
     <div class="country-div">
         <h2>{{ country.name }}</h2>
         <h3>{{ country.continent }}</h3>
-        <div clas="div-buttons"><form class= "country-delete-form" action="/countries/{{country.id}}/delete" method="post"><button>Delete</button></form></div>
+        <p> Visited? {% if country.visited %} Yes!
+
+            {% else %}
+            Not yet
+            {% endif %} </p>
+        <p>Want to visit? {% if country.want_to_visit %} Yes!
+
+            {% else %}
+            No.
+            {% endif %}</p>
+        <div class="div-buttons">
+            <a href="/countries/{{country.id}}/edit">Edit</a>
+            <form class="country-delete-form" action="/countries/{{country.id}}/delete" method="post">
+                <button>Delete</button></form>
+        </div>
     </div>
     {% endfor %}
     <div class="country-div"><a href="/countries/new">+</a></div>

@@ -13,3 +13,9 @@ body {
     background-color: lightblue;
     padding: 20px;
 }
+
+.div-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
