@@ -5,15 +5,19 @@ from models.country import Country
 class TestCity(unittest.TestCase):
 
     def setUp(self):
-        self.country = Country("Greece", True)
-        self.city_1 = City("Thessaloniki", self.country, True ,1)
-        self.city_2 = City("Patras", self.country,)
+        self.country = Country("Greece", "Europe", True, True)
+        self.city_1 = City("Thessaloniki", self.country, True, True ,1)
+        self.city_2 = City("Patras", self.country, True)
+        self.city_3 = City("Athens",self.country, False)
     
     def  test_city_has_name(self):
         self.assertEqual("Thessaloniki", self.city_1.name)
     
     def test_city_has_country(self):
         self.assertEqual(self.country, self.city_1.country)
+    
+    def test_city_has_want_to_visit_status(self):
+        self.assertEqual(True, self.city_2.want_to_visit)
     
     def test_city_has_visited_status(self):
         self.assertEqual(False, self.city_2.visited)
@@ -28,3 +32,11 @@ class TestCity(unittest.TestCase):
     def test_city_mark_as_not_visited(self):
         self.city_1.change_visited_status(False)
         self.assertEqual(False, self.city_1.visited)
+    
+    def test_city__mark_as_want_to_visit(self):
+        self.city_3.change_want_to_visit_status(True)
+        self.assertEqual(True, self.city_3.want_to_visit)
+    
+    def test_city__unmark_as_want_to_visit(self):
+        self.city_2.change_want_to_visit_status(False)
+        self.assertEqual(False, self.city_2.want_to_visit)
