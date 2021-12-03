@@ -9,5 +9,11 @@ country_repository.delete_all()
 
 country_greece = Country("Greece", "Europe", True, True)
 country_repository.save(country_greece)
+country_japan = Country("Japan", "Asia", True)
+country_repository.save(country_japan)
+
+results = country_repository.select_all()
+for country in results:
+    print(country.__dict__)
 
 pdb.set_trace()
