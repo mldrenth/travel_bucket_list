@@ -2,8 +2,9 @@
 {% block content %}
 <div class="container">
     {% for country in countries %}
-        <div><h2>{{ country.name }}</h2></div>
+        <div class="country-div"><h2>{{ country.name }}</h2><h3>{{ country.continent }}</h3></div>
     {% endfor %}
+    <div class="country-div"><a href="/countries/new">+</a></div>
 </div>
     
 {% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="/countries" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="continent">Continent:</label>
+        <input type="text" id="continent" name="continent" required>
+    </div>
+    <div>
+        <label for="visited">Visited?</label>
+        <input type="checkbox" id="visited" name="visited">
+    </div>
+    <div>
+        <label for="want_to_visit">Add to Wishlist?</label>
+        <input type="checkbox" id="want_to_visit" name="want_to_visit">
+    </div>
+    <button type="submit">Add Country</button>
+</form>
+
+{% endblock content %}
