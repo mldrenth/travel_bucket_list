@@ -37,6 +37,18 @@ def select(id):
         city = City(result['name'], country, result['want_to_visit'], result['visited'], result['id'])
     return city
 
+# SELECT BY COUNTRY
+def select_by_country(country):
+    cities = []
+    sql = "SELECT cities.* FROM cities WHERE country_id = %s"
+    values = [country.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        city = City(row['name'], country, row['want_to_visit'], row['visited'], row['id'])
+        cities.append(city)
+    return cities
+
 # UPDATE
 def update(city):
     sql = "UPDATE cities SET (name, country_id, visited, want_to_visit) = (%s, %s, %s, %s) WHERE id = %s"

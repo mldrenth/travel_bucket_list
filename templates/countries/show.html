@@ -6,6 +6,17 @@
         <h3>{{ country.continent }}</h3>
         <hr>
     </hgroup>
-   <div><h2>Cities:</h2></div>
+    <div>
+        <h2>Cities:</h2>
+        <div class="container">
+        {% for city in cities %}
+        <div class="city-div">
+            <h4>{{ city.name }}</h4>
+        </div>
+
+        {% endfor %}
+        <div class="city-div"><a href="/cities/new">+</a></div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request
 from flask import Blueprint
 from models.country import Country
 import repositories.country_repository as country_repository
+import repositories.city_repository as city_repository
 
 countries_blueprint = Blueprint("countries", __name__)
 
@@ -36,7 +37,8 @@ def create_country():
 @countries_blueprint.route("/countries/<id>")
 def show_country(id):
     country = country_repository.select(id)
-    return render_template('countries/show.html', title = "Country Info", country = country)
+    cities = city_repository.select_by_country(country)
+    return render_template('countries/show.html', title = "Country Info", country = country, cities = cities)
 
 #EDIT
 #GET '/countries/<id>/edit'
