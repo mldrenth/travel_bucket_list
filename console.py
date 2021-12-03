@@ -16,4 +16,7 @@ results = country_repository.select_all()
 for country in results:
     print(country.__dict__)
 
+selected_country = country_repository.select(country_greece.id)
+print(selected_country)
+
 pdb.set_trace()

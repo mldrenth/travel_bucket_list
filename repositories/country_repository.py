@@ -23,6 +23,17 @@ def select_all():
         countries.append(country)
     return countries
 
+# SELECT BY ID
+def select(id):
+    country = None
+    sql = "SELECT * FROM countries WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        country = Country(result['name'], result['continent'], result['want_to_visit'], result['visited'], result['id'])
+    return result
+
 
 # DELETE ALL
 def delete_all():
