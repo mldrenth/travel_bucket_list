@@ -24,12 +24,8 @@ def new_city():
 def create_city():
     name = request.form['name']
     country_id = request.form['country_id']
-    visited = False
-    if "visited" in request.form.keys():
-        visited = True
-    want_to_visit = False
-    if "want_to_visit" in request.form.keys():
-        want_to_visit = True
+    visited = "visited" in request.form.keys()
+    want_to_visit = "want_to_visit" in request.form.keys()
     country = country_repository.select(country_id)
     city = City(name, country, want_to_visit, visited)
     city_repository.save(city)

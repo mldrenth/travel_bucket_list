@@ -22,12 +22,8 @@ def new_country():
 def create_country():
     name = request.form['name']
     continent = request.form['continent']
-    visited = False
-    if "visited" in request.form.keys():
-        visited = True
-    want_to_visit = False
-    if "want_to_visit" in request.form.keys():
-        want_to_visit = True
+    visited = "visited" in request.form.keys()
+    want_to_visit = "want_to_visit" in request.form.keys()
     country = Country(name, continent, want_to_visit, visited)
     country_repository.save(country)
     return redirect('/countries')
@@ -54,12 +50,8 @@ def edit_task(id):
 def update_task(id):
     name = request.form['name']
     continent = request.form['continent']
-    visited = False
-    if "visited" in request.form.keys():
-        visited = True
-    want_to_visit = False
-    if "want_to_visit" in request.form.keys():
-        want_to_visit = True
+    visited = "visited" in request.form.keys()
+    want_to_visit = "want_to_visit" in request.form.keys()
     country = Country(name, continent, want_to_visit, visited, id)
     country_repository.update(country)
     return redirect('/countries')
