@@ -11,6 +11,7 @@ country_greece = Country("Greece", "Europe", True, True)
 country_repository.save(country_greece)
 country_japan = Country("Japan", "Asia", True)
 country_repository.save(country_japan)
+country_china = Country("China", "Asia", True, False, country_japan.id)
 
 results = country_repository.select_all()
 for country in results:
