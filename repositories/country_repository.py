@@ -32,7 +32,7 @@ def select(id):
 
     if result is not None:
         country = Country(result['name'], result['continent'], result['want_to_visit'], result['visited'], result['id'])
-    return result
+    return country
 
 # UPDATE
 def update(country):

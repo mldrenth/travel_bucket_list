@@ -14,6 +14,11 @@ body {
     padding: 20px;
 }
 
+.city-div {
+    background-color: lightcoral;
+    padding: 20px;
+}
+
 .div-buttons {
     display: flex;
     flex-direction: row;

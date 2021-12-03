@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    {% for city in cities %}
+    <div class="city-div">
+        <h2><a href="/cities/{{city.id}}">{{ city.name }}</a></h2>
+        <h3>{{ city.country.name }}</h3>
+        <p> Visited? {% if city.visited %} Yes!
+
+            {% else %}
+            Not yet
+            {% endif %} </p>
+        <p>Want to visit? {% if city.want_to_visit %} Yes!
+
+            {% else %}
+            No.
+            {% endif %}</p>
+        <div class="div-buttons">
+            <a href="/cities/{{city.id}}/edit">Edit</a>
+            <form class="city-delete-form" action="/city/{{city.id}}/delete" method="post">
+                <button>Delete</button></form>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="city-div"><a href="/cities/new">+</a></div>
+</div>
+
+{% endblock content %}
