@@ -2,9 +2,13 @@
 {% block content %}
 <div class="container">
     {% for country in countries %}
-        <div class="country-div"><h2>{{ country.name }}</h2><h3>{{ country.continent }}</h3></div>
+    <div class="country-div">
+        <h2>{{ country.name }}</h2>
+        <h3>{{ country.continent }}</h3>
+        <div clas="div-buttons"><form class= "country-delete-form" action="/countries/{{country.id}}/delete" method="post"><button>Delete</button></form></div>
+    </div>
     {% endfor %}
     <div class="country-div"><a href="/countries/new">+</a></div>
 </div>
-    
+
 {% endblock content %}
