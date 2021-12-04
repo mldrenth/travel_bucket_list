@@ -1,17 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="show-city-container">
+<div class="show-detail-container">
     <hgroup>
         <h2>{{ country.name }}</h2>
-        <h3>{{ country.continent }}</h3>
+        <h3><span class=" continent-span continent-span-{{country.continent}}">{{ country.continent }}</span></h3>
         <hr>
     </hgroup>
-    <div>
-        <h2>Cities:</h2>
+    <div class="show-cities-div">
+        <h3>Cities</h3>
         <div class="container">
         {% for city in cities %}
         <div class="city-div">
-            <h4>{{ city.name }}</h4>
+            <img class="header-image" src="https://source.unsplash.com/random/?{{city.name}},city" alt="{{city.name}}">
+            <div class="city-body-div">
+            <h2 class="city-header">{{ city.name }}</h2>
+            <h3>{{ city.country.name }}</h3>
+            <p> Visited? {% if city.visited %} <span class="far fa-check-circle"></span>
+    
+                {% else %}
+                <span class="far fa-times-circle"></span>
+                {% endif %}
+            </p>
+            <p>Want to visit? {% if city.want_to_visit %} <span class="far fa-check-circle"></span>
+    
+                {% else %}
+                <span class="far fa-times-circle"></span>
+                {% endif %}
+            </p>
+            <div class="div-buttons">
+                <a href="/cities/{{city.id}}/edit"><span class="fas fa-edit"></span></a>
+                <form class="city-delete-form" action="/cities/{{city.id}}/delete" method="post">
+                    <button class="delete-button"><span class="fas fa-trash-alt"></span></button>
+                </form>
+            </div>
+            </div>
         </div>
 
         {% endfor %}
