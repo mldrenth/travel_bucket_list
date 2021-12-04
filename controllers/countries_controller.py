@@ -39,7 +39,7 @@ def show_country(id):
 #EDIT
 #GET '/countries/<id>/edit'
 @countries_blueprint.route("/countries/<id>/edit")
-def edit_task(id):
+def edit_country(id):
     country = country_repository.select(id)
     return render_template('countries/edit.html', title = "Edit Country", country = country)
 
@@ -47,7 +47,7 @@ def edit_task(id):
 #UPDATE
 #PUT '/countries/<id>'
 @countries_blueprint.route("/countries/<id>", methods ={'POST'})
-def update_task(id):
+def update_country(id):
     name = request.form['name']
     continent = request.form['continent']
     visited = "visited" in request.form.keys()
