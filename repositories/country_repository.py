@@ -34,6 +34,18 @@ def select(id):
         country = Country(result['name'], result['continent'], result['want_to_visit'], result['visited'], result['id'])
     return country
 
+# FILTER
+def filter(option,state):
+    countries = []
+    boolean_state = state == "true"
+    sql = f"SELECT * FROM countries WHERE {option} = %s"
+    values = [boolean_state]
+    results = run_sql(sql,values)
+    for row in results:
+        country = Country(row['name'], row['continent'], row['want_to_visit'], row['visited'], row['id'])
+        countries.append(country)
+    return countries
+
 # UPDATE
 def update(country):
     sql = "UPDATE countries SET (name, continent, visited, want_to_visit) = (%s, %s, %s, %s) WHERE id = %s"

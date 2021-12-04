@@ -1,5 +1,6 @@
 body {
     background-color:#f1f1f1;
+    
 }
 
 nav {
@@ -35,6 +36,8 @@ main {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+   
+    
 }
 
 #main-image-div {
@@ -56,6 +59,47 @@ main {
     text-shadow: 4px 4px grey;
   
 }
+menu {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100vw;
+   
+}
+menu > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    
+    
+    
+}
+menu > ul > li > a {
+    background-color:   #F2EEEB;
+    padding: 5px;
+    text-decoration: none;
+    color: #2e2a22;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px;
+   
+}
+
+menu > ul > li > a:hover {
+    color: #805f4d;
+}
+
+
+menu > a {
+    background-color:  #678985;
+    padding: 5px;
+    text-decoration: none;
+    color: #F2EEEB;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px #2e2a22;
+    margin-right: 10%;
+}
 
 .container {
     display: flex;
@@ -63,6 +107,7 @@ main {
     flex-wrap: wrap;
     gap: 20px ;
     margin-left: 10px;
+    width: 100vw;
 }
 
 .header-image{

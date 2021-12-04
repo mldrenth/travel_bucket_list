@@ -40,6 +40,14 @@ def show_country(id):
     cities = city_repository.select_by_country(country)
     return render_template('countries/show.html', title = "Country Info", country = country, cities = cities)
 
+#FILTER
+#GET '/countries/filter/<option>/<state>
+@countries_blueprint.route("/countries/filter/<option>/<state>")
+def show_filtered_countries(option,state):
+    countries = country_repository.filter(option,state)
+    return render_template("countries/index.html", title = "Countries", countries = countries)
+
+
 #EDIT
 #GET '/countries/<id>/edit'
 @countries_blueprint.route("/countries/<id>/edit")

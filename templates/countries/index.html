@@ -1,38 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
-    {% for country in countries %}
-    <div class="country-div">
-        <a href="/countries/{{country.id}}"> <img class="header-image"
-                src="https://source.unsplash.com/random/?{{country.name}},iconic" alt="{{country.name}}"></a>
-        <div class="country-body-div">
-            <h2 class="country-header"><a href="/countries/{{country.id}}">{{ country.name }}</a></h2>
-            <span class=" continent-span continent-span-{{country.continent}}">{{ country.continent }}</span>
-            <p> Visited? {% if country.visited %}
-                <span class="far fa-check-circle"></span>
+<main>
+    <menu>
+        <ul>Filter by: <li><a href="/countries">Show all</a></li>
+            <li><a href="/countries/filter/visited/true">Visited</a></li>
+            <li><a href="/countries/filter/visited/false">Not Visited</a></li>
+            <li><a href="/countries/filter/want_to_visit/true">On Bucket List</a></li>
+        </ul>
+        <a href="/countries/new">Add New Country</a>
+    </menu>
+    <div class="container">
+        {% for country in countries %}
+        <div class="country-div">
+            <a href="/countries/{{country.id}}"> <img class="header-image"
+                    src="https://source.unsplash.com/random/?{{country.name}},iconic" alt="{{country.name}}"></a>
+            <div class="country-body-div">
+                <h2 class="country-header"><a href="/countries/{{country.id}}">{{ country.name }}</a></h2>
+                <span class=" continent-span continent-span-{{country.continent}}">{{ country.continent }}</span>
+                <p> Visited? {% if country.visited %}
+                    <span class="far fa-check-circle"></span>
 
-                {% else %}
-                <span class="far fa-times-circle"></span>
-                {% endif %}
-            </p>
-            <p>Want to visit? {% if country.want_to_visit %}
-                <span class="far fa-check-circle"></span>
+                    {% else %}
+                    <span class="far fa-times-circle"></span>
+                    {% endif %}
+                </p>
+                <p>Want to visit? {% if country.want_to_visit %}
+                    <span class="far fa-check-circle"></span>
 
-                {% else %}
-                <span class="far fa-times-circle"></span>
-                {% endif %}
-            </p>
-            <div class="div-buttons">
+                    {% else %}
+                    <span class="far fa-times-circle"></span>
+                    {% endif %}
+                </p>
+                <div class="div-buttons">
 
-                <a href="/countries/{{country.id}}/edit"><span class="fas fa-edit"></span></a>
-                <form class="country-delete-form" action="/countries/{{country.id}}/delete" method="post">
-                    <button class="delete-button"><span class="fas fa-trash-alt"></span></button>
-                </form>
+                    <a href="/countries/{{country.id}}/edit"><span class="fas fa-edit"></span></a>
+                    <form class="country-delete-form" action="/countries/{{country.id}}/delete" method="post">
+                        <button class="delete-button"><span class="fas fa-trash-alt"></span></button>
+                    </form>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-    <div class="country-div"><a href="/countries/new">+</a></div>
-</div>
-
+</main>
 {% endblock content %}
