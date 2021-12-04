@@ -3,7 +3,13 @@
 <form action="/countries" method="post">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <select name="name" id="name">
+            {% for country in all_countries %}
+            <option value="{{country}}">{{ country }}</option>
+            {% endfor %}
+        </select>
+
+
     </div>
     <div>
         <label for="continent">Continent:</label>

@@ -1,5 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask import Blueprint
+import geonamescache
+gc = geonamescache.GeonamesCache()
 from models.country import Country
 import repositories.country_repository as country_repository
 import repositories.city_repository as city_repository
@@ -15,7 +17,8 @@ def countries():
 #GET '/countries/new'
 @countries_blueprint.route("/countries/new")
 def new_country():
-    return render_template("countries/new.html", title = "Create New Country")
+    all_countries = gc.get_countries_by_names()
+    return render_template("countries/new.html", title = "Create New Country", all_countries = all_countries)
 
 #POST '/countries'
 @countries_blueprint.route("/countries", methods=['POST'])
@@ -40,8 +43,9 @@ def show_country(id):
 #GET '/countries/<id>/edit'
 @countries_blueprint.route("/countries/<id>/edit")
 def edit_country(id):
+    all_countries = gc.get_countries_by_names()
     country = country_repository.select(id)
-    return render_template('countries/edit.html', title = "Edit Country", country = country)
+    return render_template('countries/edit.html', title = "Edit Country", country = country, all_countries = all_countries)
 
 
 #UPDATE

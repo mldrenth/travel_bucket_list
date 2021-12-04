@@ -3,7 +3,13 @@
 <form action="/countries/{{country.id}}" method="post">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{country.name}}" required>
+        <select name="name" id="name">
+            {% for database_country in all_countries %}
+            <option value="{{database_country}}"{% if database_country == country.name %}
+                selected = "selected"
+            {% endif %}>{{ database_country }}</option>
+            {% endfor %}
+        </select>
     </div>
     <div>
         <label for="continent">Continent:</label>
