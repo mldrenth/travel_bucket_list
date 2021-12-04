@@ -63,8 +63,11 @@ def update_city(id):
     visited = "visited" in request.form.keys()
     want_to_visit = "want_to_visit" in request.form.keys()
     country = country_repository.select(country_id)
+    if visited:
+        country.change_visited_status(True)
     city = City(name, country, want_to_visit, visited, id)
     city_repository.update(city)
+    country_repository.update(country)
     return redirect('/cities')
 
 #DELETE

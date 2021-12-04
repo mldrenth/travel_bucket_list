@@ -8,6 +8,10 @@
     </hgroup>
     <div class="show-cities-div">
         <h3>Cities</h3>
+        <main>
+            <menu>             
+                <a href="/cities/new">Add New City</a>
+            </menu>
         <div class="container">
         {% for city in cities %}
         <div class="city-div">
@@ -37,7 +41,7 @@
         </div>
 
         {% endfor %}
-        <div class="city-div"><a href="/cities/new">+</a></div>
+        
         </div>
     </div>
 </div>
