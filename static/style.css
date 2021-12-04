@@ -1,5 +1,60 @@
 body {
-    background-color:gainsboro
+    background-color:#f1f1f1;
+}
+
+nav {
+    background-color: #678985;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,.2);
+}
+
+nav > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding: 20px;
+    
+}
+
+
+nav > ul > li > a {
+    background-color:   #F2EEEB;
+    padding: 10px;
+    text-decoration: none;
+    color: #2e2a22;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px;
+}
+nav > ul > li > a:hover {
+    color: #805f4d;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#main-image-div {
+    width: 70vw;
+    height: 250px;
+    background-image: url("images/luca-bravo-O453M2Liufs-unsplash.jpg");
+    background-color: rgba(255,255,255, 0.2);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: lighten;
+    box-shadow: 0px 8px 24px;
+    
+}
+#main-image-div > p {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-style: italic;
+    text-shadow: 4px 4px grey;
+  
 }
 
 .container {
