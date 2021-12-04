@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+<main>
+    <menu>
+        <ul>Filter by: <li><a href="/cities">Show all</a></li>
+            <li><a href="/cities/filter/visited/true">Visited</a></li>
+            <li><a href="/cities/filter/visited/false">Not Visited</a></li>
+            <li><a href="/cities/filter/want_to_visit/true">On Bucket List</a></li>
+        </ul>
+        <a href="/cities/new">Add New City</a>
+    </menu>
 <div class="container">
     {% for city in cities %}
     <div class="city-div">
@@ -28,7 +37,7 @@
         </div>
     </div>
     {% endfor %}
-    <div class="city-div"><a href="/cities/new">+</a></div>
+    
 </div>
 
 {% endblock content %}

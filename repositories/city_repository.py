@@ -49,6 +49,19 @@ def select_by_country(country):
         cities.append(city)
     return cities
 
+# FILTER
+def filter(option,state):
+    cities = []
+    boolean_state = state == "true"
+    sql = f"SELECT * FROM cities WHERE {option} = %s"
+    values = [boolean_state]
+    results = run_sql(sql,values)
+    for row in results:
+        country = country_repository.select(row['country_id'])
+        city = City(row['name'], country, row['want_to_visit'], row['visited'], row['id'])
+        cities.append(city)
+    return cities
+
 # UPDATE
 def update(city):
     sql = "UPDATE cities SET (name, country_id, visited, want_to_visit) = (%s, %s, %s, %s) WHERE id = %s"

@@ -38,6 +38,13 @@ def show_city(id):
     city = city_repository.select(id)
     return render_template('cities/show.html', title = "City Info", city = city)
 
+#FILTER
+#GET '/cities/filter/<option>/<state>
+@cities_blueprint.route("/cities/filter/<option>/<state>")
+def show_filtered_cities(option,state):
+    cities = city_repository.filter(option,state)
+    return render_template("cities/index.html", title = "Cities", cities = cities)
+
 #EDIT
 #GET '/cities/<id>/edit'
 @cities_blueprint.route("/cities/<id>/edit")
