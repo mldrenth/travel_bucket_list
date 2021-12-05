@@ -184,7 +184,7 @@ menu > a {
     color: #678985;
 }
 
-.visited-div {
+.status-toggle-div {
     display: flex;
     flex-direction: row;
     align-items: baseline;
