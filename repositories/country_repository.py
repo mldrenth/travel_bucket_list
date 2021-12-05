@@ -55,6 +55,7 @@ def update(country):
     run_sql(sql, values)
 
 
+
 # DELETE ALL
 def delete_all():
     sql = "DELETE FROM countries"

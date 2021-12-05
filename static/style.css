@@ -184,7 +184,12 @@ menu > a {
     color: #678985;
 }
 
-
+.visited-div {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    column-gap: 10px;
+}
 
 .div-buttons {
     display: flex;
@@ -197,6 +202,13 @@ menu > a {
 .delete-button {
     display: contents;
     cursor: pointer;
+}
+
+.change-status-button {
+    
+     display: contents;
+    cursor: pointer;
+   
 }
 
 .city-div {
