@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="/countries/{{country.id}}" method="post">
-    <div>
+<form class="form" action="/countries/{{country.id}}" method="post">
+    <div class="selection-div">
         <label for="name">Name:</label>
         <select name="name" id="name">
             {% for database_country in all_countries %}
@@ -11,19 +11,21 @@
             {% endfor %}
         </select>
     </div>
-    <div>
+    <div class="selection-div">
         <label for="continent">Continent:</label>
         <input type="text" id="continent" name="continent" value="{{country.continent}}" required>
     </div>
-    <div>
+    <div class="selection-div">
         <label for="visited">Visited?</label>
         <input type="checkbox" id="visited" name="visited" {% if country.visited %} checked {% endif %}>
     </div>
-    <div>
+    <div class="selection-div">
         <label for="want_to_visit">Add to Wishlist?</label>
         <input type="checkbox" id="want_to_visit" name="want_to_visit" {% if country.want_to_visit %} checked {% endif
             %}>
     </div>
+    <div class="selection-div selection-button">
     <button type="submit">Edit Country</button>
+    </div>
 </form>
 {% endblock content %}

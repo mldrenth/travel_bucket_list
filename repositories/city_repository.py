@@ -1,6 +1,6 @@
 from pdb import run
 from db.run_sql import run_sql
-
+from psycopg2 import sql as sql_test
 from models.country import Country
 from models.city import City
 import repositories.country_repository as country_repository
@@ -53,7 +53,8 @@ def select_by_country(country):
 def filter(option,state):
     cities = []
     boolean_state = state == "true"
-    sql = f"SELECT * FROM cities WHERE {option} = %s"
+    #Formating sql query string to pass in column via browser
+    sql = sql_test.SQL("SELECT * FROM cities WHERE {column} = %s").format(column=sql_test.Identifier(option))
     values = [boolean_state]
     results = run_sql(sql,values)
     for row in results:

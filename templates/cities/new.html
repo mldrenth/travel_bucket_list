@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="/cities" method="post">
-    <div>
+<form class="form" action="/cities" method="post">
+    <div class="selection-div">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
     </div>
-    <div>
+    <div class="selection-div">
         <label for="country">Country:</label>
         <select name="country_id" id="country">
             {% for country in countries %}
             <option value="{{country.id}}">{{ country.name }}</option>
-                
+
             {% endfor %}
         </select>
     </div>
-    <div>
+    <div class="selection-div">
         <label for="visited">Visited?</label>
         <input type="checkbox" id="visited" name="visited">
     </div>
-    <div>
+    <div class="selection-div">
         <label for="want_to_visit">Add to Wishlist?</label>
         <input type="checkbox" id="want_to_visit" name="want_to_visit">
     </div>
-    <button type="submit">Add City</button>
+    <div class="selection-div selection-button">
+        <button type="submit">Add City</button>
+    </div>
 </form>
 
 {% endblock content %}
