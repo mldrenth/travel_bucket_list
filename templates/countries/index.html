@@ -11,7 +11,7 @@
     </menu>
     <div class="container">
         {% for country in countries %}
-        <div class="country-div">
+        <div class="country-div" style="order:{{country.id}}">
             <a href="/countries/{{country.id}}"> <img class="header-image"
                     src="https://source.unsplash.com/random/?{{country.name}},iconic" alt="{{country.name}}"></a>
             <div class="country-body-div">
