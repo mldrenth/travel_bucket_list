@@ -16,7 +16,14 @@
                     src="https://source.unsplash.com/random/?{{country.name}},iconic" alt="{{country.name}}"></a>
             <div class="country-body-div">
                 <h2 class="country-header"><a href="/countries/{{country.id}}">{{ country.name }}</a></h2>
+                {% if country.continent == "South America" %}
+                <span class="continent-span continent-span-sa">{{ country.continent }}</span>
+                {% elif country.continent == "North America" %}
+                <span class="continent-span continent-span-na">{{ country.continent }}</span>
+                {% else %}
+                
                 <span class=" continent-span continent-span-{{country.continent}}">{{ country.continent }}</span>
+                {% endif %}
                 <p> Visited? {% if country.visited %}
                     <span class="far fa-check-circle"></span>
 

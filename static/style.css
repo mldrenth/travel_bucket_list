@@ -156,6 +156,26 @@ menu > a {
 .continent-span-asia {
     background-color: salmon;
 }
+.continent-span-sa {
+    background-color: cornflowerblue;
+
+}
+.continent-span-na {
+    background-color:deepskyblue;
+
+}
+
+.continent-span-australia {
+    background-color: firebrick;
+}
+
+.continent-span-africa {
+    background-color: lightpink;
+}
+
+.continent-span-antarctica {
+    background-color:peachpuff;
+}
 .far {
     color: #678985;
 }
