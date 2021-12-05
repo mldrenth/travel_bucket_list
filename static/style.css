@@ -234,3 +234,37 @@ hgroup {
     width: 100%;
     text-align: center;
 }
+
+.progress-bar {
+    background-color: f1f1f1;
+    border-radius: 4px;
+    box-shadow: inset 0 0 3px #000000;
+}
+
+.status-div {
+    width: 100%;
+    background-color: #c0cdcb;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.5);
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+.status-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+   
+}
+
+
+.percentage {
+    background-color: #678985;
+    border-radius: 3px;
+    box-shadow: inset 0 0 3px #000000;
+    text-align: center;
+}
+
+

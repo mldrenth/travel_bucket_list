@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <main>
-<!-- <h1>My Travel Bucket List</h1> -->
-<div id="main-image-div"><p>Where do you want to go today?</p></div></main>
+    <!-- <h1>My Travel Bucket List</h1> -->
+    <div id="main-image-div">
+        <p>Where do you want to go today?</p>
+    </div>
+    <div class="status-div">
+        <h3>Total Countries Visited</h3>
+        <div class="status-wrapper status-total">
+            
+            <div class="progress-bar" style="height: 24px; width: 100%;">
+                <div class="percentage" style="height: 24px; width: {{percentage}}%;">{{ percentage }}%</div>
+            </div>
+        </div>
+    </div>
+</main>
 
-    
+
 {% endblock content %}

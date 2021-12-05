@@ -3,7 +3,20 @@
 <div class="show-detail-container">
     <hgroup>
         <h2>{{ country.name }}</h2>
-        <h3><span class=" continent-span continent-span-{{country.continent}}">{{ country.continent }}</span></h3>
+        <h3>{% if country.continent == "South America" %}
+            <span class="continent-span continent-span-sa">{{ country.continent }}</span>
+            {% elif country.continent == "North America" %}
+            <span class="continent-span continent-span-na">{{ country.continent }}</span>
+            {% else %}
+            
+            <span class=" continent-span continent-span-{{country.continent}}">{{ country.continent }}</span>
+            {% endif %}
+            <p> Visited? {% if country.visited %}
+                <span class="far fa-check-circle"></span>
+
+                {% else %}
+                <span class="far fa-times-circle"></span>
+                {% endif %}</h3>
         <hr>
     </hgroup>
     <div class="show-cities-div">

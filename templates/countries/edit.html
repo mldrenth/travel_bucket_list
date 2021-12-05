@@ -5,15 +5,29 @@
         <label for="name">Name:</label>
         <select name="name" id="name">
             {% for database_country in all_countries %}
-            <option value="{{database_country}}"{% if database_country == country.name %}
-                selected = "selected"
-            {% endif %}>{{ database_country }}</option>
+            <option value="{{database_country}}" {% if database_country==country.name %} selected="selected" {% endif
+                %}>{{ database_country }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="selection-div">
         <label for="continent">Continent:</label>
-        <input type="text" id="continent" name="continent" value="{{country.continent}}" required>
+        <select id="continent" name="continent">
+            <option value="Africa" {% if country.continent=="Africa" %} selected {% endif %}>Africa</option>
+            <option value="Antarctica" {% if country.continent=="Antarctica" %} selected {% endif %}>Antarctica</option>
+            <option value="Asia" {% if country.continent == "Asia" %} selected
+                
+            {% endif %}>Asia</option>
+            <option value="Australia" {% if country.continent == "Australia" %} selected
+                
+            {% endif %}>Australia</option>
+            <option value="Europe" {% if country.continent == "Europe" %} selected
+                
+            {% endif %}>Europe</option>
+            <option value="North America" {% if country.continent=="North America" %} selected {% endif %}>North America
+            </option>
+            <option value="South America">South America</option>
+        </select>
     </div>
     <div class="selection-div">
         <label for="visited">Visited?</label>
@@ -25,7 +39,7 @@
             %}>
     </div>
     <div class="selection-div selection-button">
-    <button type="submit">Edit Country</button>
+        <button type="submit">Edit Country</button>
     </div>
 </form>
 {% endblock content %}
