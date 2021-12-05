@@ -34,6 +34,16 @@ def select(id):
     if result is not None:
         country = Country(result['name'], result['continent'], result['want_to_visit'], result['visited'], result['id'])
     return country
+#SELECT BY CONTINENT
+def select_by_continent(continent):
+    countries = []
+    sql = "SELECT * FROM countries where continent = %s"
+    values = [continent]
+    results = run_sql(sql, values)
+    for row in results:
+        country = Country(row['name'], row['continent'], row['want_to_visit'], row['visited'], row['id'])
+        countries.append(country)
+    return countries
 
 # FILTER
 def filter(option,state):

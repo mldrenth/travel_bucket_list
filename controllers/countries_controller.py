@@ -47,6 +47,18 @@ def show_filtered_countries(option,state):
     countries = country_repository.filter(option,state)
     return render_template("countries/index.html", title = "Countries", countries = countries)
 
+#FILTER BY CONTINENT
+#GET '/countries/filter/<continent>
+@countries_blueprint.route("/countries/filter/<continent>")
+def show_countries_by_continent(continent):
+    formated_continent = continent.capitalize()
+    if formated_continent == "Na":
+        formated_continent = "North America"
+    elif formated_continent == "Sa":
+        formated_continent = "South America"
+    countries = country_repository.select_by_continent(formated_continent)
+    return render_template("countries/index.html", title = "Countries", countries = countries)
+
 
 #EDIT
 #GET '/countries/<id>/edit'

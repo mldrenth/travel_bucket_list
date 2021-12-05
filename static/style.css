@@ -206,7 +206,7 @@ menu > a {
 
 .change-status-button {
     
-     display: contents;
+    display: contents;
     cursor: pointer;
    
 }
@@ -279,4 +279,7 @@ hgroup {
     text-align: center;
 }
 
+.continent-link {
+    display: contents;
+}
 
