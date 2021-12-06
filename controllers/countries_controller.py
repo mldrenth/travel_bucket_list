@@ -48,12 +48,20 @@ def show_filtered_countries(option,state):
     return render_template("countries/index.html", title = "Countries", countries = countries)
 
 #FILTER BY CONTINENT
-#GET '/countries/filter/<continent>
+#GET '/countries/filter/continent
 @countries_blueprint.route("/countries/filter/continent" , methods=["POST"])
 def show_countries_by_continent():
     continent = request.form['continent']
     countries = country_repository.select_by_continent(continent)
     return render_template("countries/index.html", title = "Countries", countries = countries, continent = continent)
+
+#SEARCH FOR COUNTRY
+#GET '/countries/filter/country
+@countries_blueprint.route("/countries/filter/country" , methods=["POST"])
+def search_for_country():
+    country_name = request.form['country'].capitalize()
+    countries = country_repository.select_by_name(country_name)
+    return render_template("/countries/index.html", title ="Countries", countries = countries)
 
 
 #EDIT

@@ -34,11 +34,24 @@ def select(id):
     if result is not None:
         country = Country(result['name'], result['continent'], result['want_to_visit'], result['visited'], result['id'])
     return country
+
+
 #SELECT BY CONTINENT
 def select_by_continent(continent):
     countries = []
     sql = "SELECT * FROM countries where continent = %s"
     values = [continent]
+    results = run_sql(sql, values)
+    for row in results:
+        country = Country(row['name'], row['continent'], row['want_to_visit'], row['visited'], row['id'])
+        countries.append(country)
+    return countries
+
+#SELECT BY NAME
+def select_by_name(country_name):
+    countries = []
+    sql = "SELECT * FROM countries where name = %s"
+    values = [country_name]
     results = run_sql(sql, values)
     for row in results:
         country = Country(row['name'], row['continent'], row['want_to_visit'], row['visited'], row['id'])
@@ -63,7 +76,6 @@ def update(country):
     sql = "UPDATE countries SET (name, continent, visited, want_to_visit) = (%s, %s, %s, %s) WHERE id = %s"
     values = [country.name, country.continent, country.visited,country.want_to_visit, country.id]
     run_sql(sql, values)
-
 
 
 # DELETE ALL
