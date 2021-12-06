@@ -49,6 +49,20 @@ def select_by_country(country):
         cities.append(city)
     return cities
 
+# SELECT BY NAME
+def select_by_name(city_name):
+    cities = []
+    sql = "SELECT * FROM cities WHERE name = %s"
+    values = [city_name]
+    results = run_sql(sql, values)
+    for row in results:
+        country = country_repository.select(row['country_id'])
+        city = City(row['name'], country, row['want_to_visit'], row['visited'], row['id'])
+        cities.append(city)
+    return cities
+
+
+
 # FILTER
 def filter(option,state):
     cities = []

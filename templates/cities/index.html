@@ -6,6 +6,10 @@
             <li><a href="/cities/filter/visited/true">Visited</a></li>
             <li><a href="/cities/filter/visited/false">Not Visited</a></li>
             <li><a href="/cities/filter/want_to_visit/true">On Bucket List</a></li>
+            <li>
+                <form action="/cities/filter/city" method="post"><label for="city">City:</label>
+                <input type="text" name="city" id="city"> <button type="submit">Search</button></form>
+            </li>
         </ul>
         <a href="/cities/new">Add New City</a>
     </menu>
