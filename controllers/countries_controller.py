@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request
 from flask import Blueprint
 import geonamescache
+import pdb
 from models.country import Country
 import repositories.country_repository as country_repository
 import repositories.city_repository as city_repository
@@ -59,7 +60,8 @@ def show_countries_by_continent():
 #GET '/countries/filter/country
 @countries_blueprint.route("/countries/filter/country" , methods=["POST"])
 def search_for_country():
-    country_name = request.form['country'].capitalize()
+    country_name = request.form['country'].title()
+    print(country_name)
     countries = country_repository.select_by_name(country_name)
     return render_template("/countries/index.html", title ="Countries", countries = countries)
 
