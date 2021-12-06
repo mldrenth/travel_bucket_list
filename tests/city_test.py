@@ -26,17 +26,10 @@ class TestCity(unittest.TestCase):
         self.assertEqual(1, self.city_1.id)
     
     def test_city_mark_as__visited(self):
-        self.city_2.change_visited_status(True)
+        self.city_2.toggle_visited_status()
         self.assertEqual(True, self.city_2.visited)
-    
-    def test_city_mark_as_not_visited(self):
-        self.city_1.change_visited_status(False)
-        self.assertEqual(False, self.city_1.visited)
-    
+      
     def test_city__mark_as_want_to_visit(self):
-        self.city_3.change_want_to_visit_status(True)
+        self.city_3.toggle_want_to_visit_status()
         self.assertEqual(True, self.city_3.want_to_visit)
     
-    def test_city__unmark_as_want_to_visit(self):
-        self.city_2.change_want_to_visit_status(False)
-        self.assertEqual(False, self.city_2.want_to_visit)

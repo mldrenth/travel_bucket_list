@@ -83,17 +83,15 @@ def update_city(id):
 @cities_blueprint.route("/cities/<id>/edit/visited", methods =['POST'])
 def toggle_visited_status(id):
     city = city_repository.select(id)
-    status= city.visited
-    city.change_visited_status(not status)
+    city.toggle_visited_status()
     city_repository.update(city)
     return redirect('/cities')
 
-# TOGGLE VISITED STATUS
+# TOGGLE WANT TO VISIT STATUS
 @cities_blueprint.route("/cities/<id>/edit/want_to_visit", methods =['POST'])
 def toggle_want_to_visit_status(id):
     city = city_repository.select(id)
-    status = city.want_to_visit
-    city.change_want_to_visit_status(not status)
+    city.toggle_want_to_visit_status()
     city_repository.update(city)
     return redirect('/cities')
 

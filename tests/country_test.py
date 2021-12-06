@@ -24,19 +24,11 @@ class TestCountry(unittest.TestCase):
     def test_country_can_set_id(self):
         self.assertEqual(3, self.country_3.id)
     
-    def test_country_mark_as__visited(self):
-        self.country_2.change_visited_status(True)
+    def test_country_toggle_visited(self):
+        self.country_2.toggle_visited_status()
         self.assertEqual(True, self.country_2.visited)
     
-    def test_country_mark_as__not_visited(self):
-        self.country_1.change_visited_status(False)
-        self.assertEqual(False, self.country_1.visited)
-    
-    def test_country__mark_as_want_to_visit(self):
-        self.country_3.change_want_to_visit_status(True)
-        self.assertEqual(True, self.country_3.want_to_visit)
-    
     def test_country__unmark_as_want_to_visit(self):
-        self.country_2.change_want_to_visit_status(False)
+        self.country_2.toggle_want_to_visit_status()
         self.assertEqual(False, self.country_3.want_to_visit)
     

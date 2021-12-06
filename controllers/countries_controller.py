@@ -89,17 +89,15 @@ def update_country(id):
 @countries_blueprint.route("/countries/<id>/edit/visited", methods =['POST'])
 def toggle_visited_status(id):
     country = country_repository.select(id)
-    status = country.visited
-    country.change_visited_status(not status)
+    country.toggle_visited_status()
     country_repository.update(country)
     return redirect('/countries')
 
-# TOGGLE VISITED STATUS
+# TOGGLE WANT TO VISIT STATUS
 @countries_blueprint.route("/countries/<id>/edit/want_to_visit", methods =['POST'])
 def toggle_want_to_visit_status(id):
     country = country_repository.select(id)
-    status = country.want_to_visit
-    country.change_want_to_visit_status(not status)
+    country.toggle_want_to_visit_status()
     country_repository.update(country)
     return redirect('/countries')
 

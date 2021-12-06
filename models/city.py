@@ -6,8 +6,8 @@ class City:
         self.visited = visited
         self.id = id
     
-    def change_visited_status(self,status):
-        self.visited = status
-
-    def change_want_to_visit_status(self, status):
-        self.want_to_visit = status
+    def toggle_visited_status(self):
+        self.visited = not self.visited
+    
+    def toggle_want_to_visit_status(self):
+        self.want_to_visit = not self.want_to_visit
