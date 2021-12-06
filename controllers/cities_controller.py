@@ -49,7 +49,7 @@ def show_filtered_cities(option,state):
 #GET '/cities/filter/city
 @cities_blueprint.route("/cities/filter/city", methods=["POST"])
 def search_by_name():
-    city_name = request.form['city'].capitalize()
+    city_name = request.form['city'].title()
     cities = city_repository.select_by_name(city_name)
     return render_template("/cities/index.html", title ="Cities", cities = cities)
 
