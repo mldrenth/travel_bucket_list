@@ -1,0 +1,35 @@
+.city-div {
+    background-color: #c0cdcb;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.2);
+    width: 300px;
+    overflow: hidden;
+}
+
+.city-header {
+    text-decoration: none;
+    color: #3a4c4a;
+}
+
+.city-body-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    align-items: flex-start;
+}
+
+.show-detail-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+hgroup {
+    text-align: center;
+    width: 100%;
+}
+
+.show-cities-div {
+    width: 100%;
+    text-align: center;
+}
