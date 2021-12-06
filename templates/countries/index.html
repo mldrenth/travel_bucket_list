@@ -6,13 +6,24 @@
             <li><a href="/countries/filter/visited/true">Visited</a></li>
             <li><a href="/countries/filter/visited/false">Not Visited</a></li>
             <li><a href="/countries/filter/want_to_visit/true">On Bucket List</a></li>
-            <li ><a class="continent-link" href="/countries/filter/asia"><span class="continent-span continent-span-asia">Asia</span></a></li>
-            <li ><a class="continent-link" href="/countries/filter/europe"><span class="continent-span continent-span-europe">Europe</span></a></li>
-            <li ><a class="continent-link" href="/countries/filter/africa"><span class="continent-span continent-span-africa">Africa</span></a></li>
-            <li ><a class="continent-link" href="/countries/filter/na"><span class="continent-span continent-span-na">North America</span></a></li>
-            <li ><a class="continent-link" href="/countries/filter/sa"><span class="continent-span continent-span-sa">South America</span></a></li>
-            <li ><a class="continent-link" href="/countries/filter/australia"><span class="continent-span continent-span-australia">Australia</span></a></li>
-            <li ><a class="continent-link" href="/countries/filter/antarctica"><span class="continent-span continent-span-antarctica">Antarctica</span></a></li>
+            <li>
+                <form action="/countries/filter/continent" method="post" > <label for="continent">Continent:</label>
+                    <select id="continent" name="continent">
+                        <option value="Africa"{% if continent=="Africa" %}
+                            selected ="selected"
+                        {% endif %}>Africa</option>
+                        <option value="Antarctica" {% if continent=="Antarctica" %}
+                        selected="selected"
+                    {% endif %}>Antarctica</option>
+                        <option value="Asia"{% if continent=="Asia" %} selected="selected" {% endif %}>Asia</option>
+                        <option value="Australia" {% if continent=="Australia" %} selected="selected" {% endif %}>Australia</option>
+                        <option value="Europe" {% if continent=="Europe" %} selected="selected" {% endif %}>Europe</option>
+                        <option value="North America"{% if continent=="North America" %} selected="selected" {% endif %}>North America</option>
+                        <option value="South America" {% if continent=="South America" %} selected="selected" {% endif %}>South America</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
         </ul>
         <a href="/countries/new">Add New Country</a>
     </menu>
