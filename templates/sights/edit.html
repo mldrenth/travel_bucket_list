@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="form" action="/sights/{{sight.id}}" method="post">
+    <div class="selection-div">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{sight.name}}" required>
+    </div>
+    <div class="selection-div">
+        <label for="name">Category:</label>
+        <input type="text" id="category" name="category" value="{{sight.category}}" required>
+    </div>
+    <div class="selection-div">
+        <label for="city">City:</label>
+        <select name="city_id" id="city">
+            {% for city in cities %}
+            <option value="{{city.id}}" {% if sight.city.id==city.id %} selected="selected" {% endif %}>
+
+                {{ city.name }}</option>
+
+            {% endfor %}
+        </select>
+    </div>
+    <div class="selection-div">
+        <label for="visited">Visited?</label>
+        <input type="checkbox" id="visited" name="visited" {% if sight.visited %} checked {% endif %}>
+    </div>
+    <div class="selection-div">
+        <label for="want_to_visit">Add to Wishlist?</label>
+        <input type="checkbox" id="want_to_visit" name="want_to_visit" {% if sight.want_to_visit %} checked {% endif %}>
+    </div>
+    <div class="selection-div selection-button">
+    <button type="submit">Submit</button>
+    </div>
+</form>
+
+{% endblock content %}

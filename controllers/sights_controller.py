@@ -30,57 +30,68 @@ def create_sight():
     visited = "visited" in request.form.keys()
     want_to_visit = "want_to_visit" in request.form.keys()
     city = city_repository.select(city_id)
-    sight = Sight(name, category, city, want_to_visit, visited)
+    sight = Sight(name, category, city, visited, want_to_visit)
     sight_repository.save(sight)
     return redirect('/sights')
 
-# #FILTER
-# #GET '/cities/filter/<option>/<state>
-# @cities_blueprint.route("/cities/filter/<option>/<state>")
-# def show_filtered_cities(option,state):
-#     cities = city_repository.filter(option,state)
-#     return render_template("cities/index.html", title = "Cities", cities = cities)
+#FILTER
+#GET '/sights/filter/<option>/<state>
+@sights_blueprint.route("/sights/filter/<option>/<state>")
+def show_filtered_sights(option,state):
+    sights = sight_repository.filter(option,state)
+    return render_template("sights/index.html", title = "Sights", sights = sights)
 
-# #SEARCH BY NAME
-# #GET '/cities/filter/city
-# @cities_blueprint.route("/cities/filter/city", methods=["POST"])
-# def search_by_name():
-#     city_name = request.form['city'].title()
-#     cities = city_repository.select_by_name(city_name)
-#     return render_template("/cities/index.html", title ="Cities", cities = cities)
-
-
-# #EDIT
-# #GET '/cities/<id>/edit'
-# @cities_blueprint.route("/cities/<id>/edit")
-# def edit_city(id):
-#     city = city_repository.select(id)
-#     countries = country_repository.select_all()
-#     return render_template('cities/edit.html', title = "Edit City", city = city, countries = countries)
+#SEARCH BY NAME
+#GET '/sights/filter/sight
+@sights_blueprint.route("/sights/filter/sight", methods=["POST"])
+def search_by_name():
+    sight_name = request.form['sight'].title()
+    sights = sight_repository.select_by_name(sight_name)
+    return render_template("/sights/index.html", title ="Sights", sights = sights)
 
 
-# #UPDATE
-# #PUT '/countries/<id>'
-# @cities_blueprint.route("/cities/<id>", methods ={'POST'})
-# def update_city(id):
-#     name = request.form['name']
-#     country_id = request.form['country_id']
-#     visited = "visited" in request.form.keys()
-#     want_to_visit = "want_to_visit" in request.form.keys()
-#     country = country_repository.select(country_id)
-#     if visited:
-#         country.change_visited_status(True)
-#     city = City(name, country, want_to_visit, visited, id)
-#     city_repository.update(city)
-#     country_repository.update(country)
-#     return redirect('/cities')
+#EDIT
+#GET '/sights/<id>/edit'
+@sights_blueprint.route("/sights/<id>/edit")
+def edit_sight(id):
+    sight = sight_repository.select(id)
+    cities = city_repository.select_all()
+    return render_template('sights/edit.html', title = "Edit Sight", sight = sight, cities = cities)
+
+
+#UPDATE
+#PUT '/countries/<id>'
+@sights_blueprint.route("/sights/<id>", methods ={'POST'})
+def update_sight(id):
+    name = request.form['name']
+    category = request.form['category']
+    city_id = request.form['city_id']
+    visited = "visited" in request.form.keys()
+    want_to_visit = "want_to_visit" in request.form.keys()
+    city = city_repository.select(city_id)
+    country = country_repository.select(city.country.id)
+    if visited:
+        country.visited = True
+        city.visited = True
+    sight = Sight(name, category, city, visited, want_to_visit, id)
+    city_repository.update(city)
+    country_repository.update(country)
+    sight_repository.update(sight)
+    return redirect('/sights')
 
 # TOGGLE VISITED STATUS
 @sights_blueprint.route("/sights/<id>/edit/visited", methods =['POST'])
 def toggle_visited_status(id):
     sight = sight_repository.select(id)
     sight.toggle_visited_status()
+    city = city_repository.select(sight.city.id)
+    country = country_repository.select(city.country.id)
+    if sight.visited:
+        country.visited = True
+        city.visited = True
     sight_repository.update(sight)
+    city_repository.update(city)
+    country_repository.update(country)
     return redirect('/sights')
 
 # TOGGLE WANT TO VISIT STATUS

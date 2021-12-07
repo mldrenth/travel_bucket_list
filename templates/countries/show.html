@@ -36,8 +36,8 @@
             <div class="container">
                 {% for city in cities %}
                 <div class="city-div">
-                    <img class="header-image" src="https://source.unsplash.com/random/?{{city.name}},city"
-                        alt="{{city.name}}">
+                    <a href="/cities/{{city.id}}"><img class="header-image"
+                            src="https://source.unsplash.com/random/?{{city.name}},city" alt="{{city.name}}"> </a>
                     <div class="city-body-div">
                         <h2 class="city-header">{{ city.name }}</h2>
                         <h3>{{ city.country.name }}</h3>

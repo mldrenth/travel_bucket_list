@@ -73,7 +73,7 @@ def update_city(id):
     want_to_visit = "want_to_visit" in request.form.keys()
     country = country_repository.select(country_id)
     if visited:
-        country.change_visited_status(True)
+        country.visited = True
     city = City(name, country, want_to_visit, visited, id)
     city_repository.update(city)
     country_repository.update(country)
@@ -83,8 +83,12 @@ def update_city(id):
 @cities_blueprint.route("/cities/<id>/edit/visited", methods =['POST'])
 def toggle_visited_status(id):
     city = city_repository.select(id)
+    country = country_repository.select(city.country.id)
     city.toggle_visited_status()
+    if city.visited:
+        country.visited = True
     city_repository.update(city)
+    country_repository.update(country)
     return redirect('/cities')
 
 # TOGGLE WANT TO VISIT STATUS
