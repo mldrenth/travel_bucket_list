@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <menu>
+        <ul>Filter by: <li><a href="/sights">Show all</a></li>
+            <li><a href="/sights/filter/visited/true">Visited</a></li>
+            <li><a href="/sights/filter/visited/false">Not Visited</a></li>
+            <li><a href="/sights/filter/want_to_visit/true">On Bucket List</a></li>
+            <li>
+                <form action="/sights/filter/sight" method="post"><label for="city">Sight:</label>
+                    <input type="text" name="sight" id="sight"> <button type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+        <a href="/sights/new">Add New Sight</a>
+    </menu>
+    <div id="country-display"></div>
+    <div class="container">
+        {% for sight in sights %}
+        <div class="city-div" style="order:{{sight.id}}">
+            <img class="header-image" src="https://source.unsplash.com/random/?{{sight.city.name}},{{sight.category}}" alt="{{sight.name}}">
+            <div class="city-body-div">
+                <h2 class="city-header">{{ sight.name }}</h2>
+                <h3>{{ sight.city.name }}</h3>
+                <h3>{{sight.category}}</h3>
+                <div class="status-toggle-div">
+                    <p> Visited?</p>
+                    <form action="/sights/{{sight.id}}/edit/visited" method="post"><button
+                            class="change-status-button">{% if sight.visited %}
+                            <span class="far fa-check-circle"></span>
+
+                            {% else %}
+                            <span class="far fa-times-circle"></span>
+                            {% endif %}</button> </form>
+                </div>
+                <div class="status-toggle-div">
+                    <p>Want to visit?</p>
+                    <form action="/sights/{{sight.id}}/edit/want_to_visit" method="post"><button
+                            class="change-status-button"> {% if sight.want_to_visit %}
+                            <span class="far fa-check-circle"></span>
+
+                            {% else %}
+                            <span class="far fa-times-circle"></span>
+                            {% endif %}</button></form>
+                </div>
+                <div class="div-buttons">
+                    <a href="/sights/{{sight.id}}/edit"><span class="fas fa-edit"></span></a>
+                    <form class="city-delete-form" action="/sights/{{sight.id}}/delete" method="post">
+                        <button class="delete-button"><span class="fas fa-trash-alt"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    {% endblock content %}
