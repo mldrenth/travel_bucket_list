@@ -27,28 +27,38 @@
                 <a href="/cities/new">Add New Sight</a>
             </menu>
             <div class="container">
-                {% for city in cities %}
-                <div class="city-div">
-                    <img class="header-image" src="https://source.unsplash.com/random/?{{city.name}},city"
-                        alt="{{city.name}}">
+                {% for sight in sights %}
+                <div class="city-div" style="order:{{sight.id}}">
+                    <img class="header-image"
+                        src="https://source.unsplash.com/random/?{{sight.city.name}},{{sight.category}}"
+                        alt="{{sight.name}}">
                     <div class="city-body-div">
-                        <h2 class="city-header">{{ city.name }}</h2>
-                        <h3>{{ city.country.name }}</h3>
-                        <p> Visited? {% if city.visited %} <span class="far fa-check-circle"></span>
+                        <h2 class="city-header">{{ sight.name }}</h2>
+                        <h3>{{ sight.city.name }}</h3>
+                        <h3>{{sight.category}}</h3>
+                        <div class="status-toggle-div">
+                            <p> Visited?</p>
+                            <form action="/sights/{{sight.id}}/edit/visited" method="post"><button
+                                    class="change-status-button">{% if sight.visited %}
+                                    <span class="far fa-check-circle"></span>
 
-                            {% else %}
-                            <span class="far fa-times-circle"></span>
-                            {% endif %}
-                        </p>
-                        <p>Want to visit? {% if city.want_to_visit %} <span class="far fa-check-circle"></span>
+                                    {% else %}
+                                    <span class="far fa-times-circle"></span>
+                                    {% endif %}</button> </form>
+                        </div>
+                        <div class="status-toggle-div">
+                            <p>Want to visit?</p>
+                            <form action="/sights/{{sight.id}}/edit/want_to_visit" method="post"><button
+                                    class="change-status-button"> {% if sight.want_to_visit %}
+                                    <span class="far fa-check-circle"></span>
 
-                            {% else %}
-                            <span class="far fa-times-circle"></span>
-                            {% endif %}
-                        </p>
+                                    {% else %}
+                                    <span class="far fa-times-circle"></span>
+                                    {% endif %}</button></form>
+                        </div>
                         <div class="div-buttons">
-                            <a href="/cities/{{city.id}}/edit"><span class="fas fa-edit"></span></a>
-                            <form class="city-delete-form" action="/cities/{{city.id}}/delete" method="post">
+                            <a href="/sights/{{sight.id}}/edit"><span class="fas fa-edit"></span></a>
+                            <form class="city-delete-form" action="/sights/{{sight.id}}/delete" method="post">
                                 <button class="delete-button"><span class="fas fa-trash-alt"></span></button>
                             </form>
                         </div>
