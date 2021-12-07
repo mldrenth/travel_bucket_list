@@ -35,6 +35,16 @@ def select(id):
         country = Country(result['name'], result['continent'], result['want_to_visit'], result['visited'], result['id'])
     return country
 
+#Creating a function to select all countries in the database by continent, taking in a continent name as the parameter
+#1. Create an empty list to store all countries in that match the search
+#2. Write the SQL query string that returns all countries from my database where the continent 
+# equals the chosen value
+#3. Store the continent name outside of the string in a values variable
+#4. Store the results of the run_sql function with the query string and values
+#5. Loop over the results, creating a country object for each row
+#6. Append the countries to the list created at the start of the function
+#7. Return the list
+
 
 #SELECT BY CONTINENT
 def select_by_continent(continent):
