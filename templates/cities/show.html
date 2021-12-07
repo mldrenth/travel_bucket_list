@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="show-detail-container">
+    <hgroup>
+        <h2>{{ city.name }}</h2>
+        <h3>{{ city.country.name }}</h3>
+        <p> Visited? {% if city.visited %}
+            <span class="far fa-check-circle"></span>
+
+            {% else %}
+            <span class="far fa-times-circle"></span>
+            {% endif %}
+        </p>
+        <p> Want to visit? {% if city.want_to_visit %}
+            <span class="far fa-check-circle"></span>
+
+            {% else %}
+            <span class="far fa-times-circle"></span>
+            {% endif %}
+        </p>
+        <hr>
+    </hgroup>
+    <div class="show-cities-div">
+        <h3>Sights</h3>
+        <main>
+            <menu id="detailed-country-menu">
+                <a href="/cities/new">Add New Sight</a>
+            </menu>
+            <div class="container">
+                {% for city in cities %}
+                <div class="city-div">
+                    <img class="header-image" src="https://source.unsplash.com/random/?{{city.name}},city"
+                        alt="{{city.name}}">
+                    <div class="city-body-div">
+                        <h2 class="city-header">{{ city.name }}</h2>
+                        <h3>{{ city.country.name }}</h3>
+                        <p> Visited? {% if city.visited %} <span class="far fa-check-circle"></span>
+
+                            {% else %}
+                            <span class="far fa-times-circle"></span>
+                            {% endif %}
+                        </p>
+                        <p>Want to visit? {% if city.want_to_visit %} <span class="far fa-check-circle"></span>
+
+                            {% else %}
+                            <span class="far fa-times-circle"></span>
+                            {% endif %}
+                        </p>
+                        <div class="div-buttons">
+                            <a href="/cities/{{city.id}}/edit"><span class="fas fa-edit"></span></a>
+                            <form class="city-delete-form" action="/cities/{{city.id}}/delete" method="post">
+                                <button class="delete-button"><span class="fas fa-trash-alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+    </div>
+</div>
+{% endblock content %}
