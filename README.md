@@ -3,7 +3,7 @@
 This was done within 5 days as part of CodeClan's Professional Software Development course.
 The brief can be found <a href="https://github.com/codeclan/g28_classnotes/blob/main/python_projects/project_briefs/Travel_Bucket_List.md"> here</a>.
 
-As in avid traveller myself, it was easy for me to choose this topic. With this project, I devolped my skills as a software engineer both from a frontend and a  backend point of view. Within the app, you can create and edit new countries, cities and sights you want to visit and have visited so far. It is interacting with a PostgreSQL database (full CRUD functionality) and is following RESTful conventions. It was built using only :
+As an avid traveller myself, it was easy for me to choose this topic. With this project, I devolped my skills as a software engineer both from a frontend and a  backend point of view. Within the app, you can create and edit new countries, cities and sights you want to visit and have visited so far. It is interacting with a PostgreSQL database (full CRUD functionality) and is following RESTful conventions. It was built using only :
 <ul>
 <li>HTML / CSS</li>
 <li>Python</li>
