@@ -11,7 +11,10 @@ As an avid traveller myself, it was easy for me to choose this topic. With this 
 <li>PostgreSQL and psycopg2 </li>
 <li> GeonamesCache to gain access to a list of country names </li> </ul>
 
-<h3> Instructions </h3>
+### This is how it looks:
+![App Screenshot](/static/images/app_screenshot.png?raw=true)
+
+### Instructions
 <ol>
 <li>Create a database called "travel_bucket_list"</li>
 <li>In your terminal move to the downloaded folder and enter "psql -d travel_bucket_list -f travel_bucket_list.sql</li>
