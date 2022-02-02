@@ -33,8 +33,16 @@ As an avid traveller myself, it was easy for me to choose this topic. With this 
 ![App Screenshot](/static/images/app_screenshot.png?raw=true)
 
 ## Instructions
-<ol>
-<li>Create a database called "travel_bucket_list"</li>
-<li>In your terminal move to the downloaded folder and enter "psql -d travel_bucket_list -f travel_bucket_list.sql</li>
-<li> Run console.py with Python 3 to populate the database with examples</li>
-<li> Type "flask run" to start the application and click on the link shown in the terminal </li>
+### Requirements
+You will need the following installed:
+- Git
+- Python 3
+- Flask
+- Postgres
+- Psycopg2
+
+###How to run
+- Create the database by typing "dropdb travel_bucket_list" and then "createdb travel_bucket_list" in the terminal
+- In your terminal move to the downloaded folder and enter "psql -d travel_bucket_list -f travel_bucket_list.sql"
+- Run console.py with Python 3 to populate the database with examples
+- Type "flask run" to start the application and click on the link shown in the terminal
