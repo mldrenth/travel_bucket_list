@@ -41,7 +41,7 @@ You will need the following installed:
 - Postgres
 - Psycopg2
 
-###How to run
+### How to run
 - Create the database by typing "dropdb travel_bucket_list" and then "createdb travel_bucket_list" in the terminal
 - In your terminal move to the downloaded folder and enter "psql -d travel_bucket_list -f travel_bucket_list.sql"
 - Run console.py with Python 3 to populate the database with examples
